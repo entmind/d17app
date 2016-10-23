@@ -1,0 +1,36 @@
+<!--<p id="notice"><%#= notice %></p>-->
+
+<h1>ブログ記事一覧(論理削除)</h1>
+<%= link_to 'ブログ記事一覧(公開)', blogs_path %>
+
+<div class="blog-table">
+  <table class="blog-table">
+    <thead>
+      <tr>
+        <th>記事タイトル</th>
+        <th>内容</th>
+        <th>ステータス</th>
+        <th>ユーザー名</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @blogs.each do |blog| %>
+        <% if blog.status == 3 && blog.user.id == current_user.id %>
+          <tr>
+            <td><%= blog.title %></td>
+            <td><%= blog.content %></td>
+            <td><%= blog.status == 1? "１：下書き" : "２：公開" %></td>
+            <td><%= blog.user.name %></td>
+            <td colspan="3"><span>（削除済み）</span></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<br>
+
+<%= link_to 'ブログ記事一覧(公開)', blogs_path %>

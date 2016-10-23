@@ -1,0 +1,43 @@
+// Place all the styles related to the Blogs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+div.blog-table {
+  margin: auto;
+}
+table {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.blog-table {
+  overflow: auto;        /*tableをスクロールさせる*/
+  white-space: nowrap;   /*tableのセル内にある文字の折り返しを禁止*/
+}
+.blog-table::-webkit-scrollbar {    /*tableにスクロールバーを追加*/
+  height: 5px;
+}
+.blog-table::-webkit-scrollbar-track {    /*tableにスクロールバーを追加*/
+  background: #F1F1F1;
+}
+.blog-table::-webkit-scrollbar-thumb {    /*tableにスクロールバーを追加*/
+  background: #BCBCBC;
+}
+table.blog-table {
+  width: 80%;
+  border-collapse: collapse;
+}
+table.blog-table th {
+  width: 25%;
+  padding: 6px;
+  text-align: left;
+  vertical-align: top;
+  color: #333;
+  background-color: #eee;
+  border: 1px solid #b9b9b9;
+}
+table.blog-table td {
+  padding: 6px;
+  background-color: #fff;
+  border: 1px solid #b9b9b9;
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>d17app</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <header> <!-- bootstrap-navbarに差し替えたよ。dive05 -->
+    <div class="header-left"><%= link_to "d17app", root_path %></div>
+    <div class="header-right">
+      <% if user_signed_in? %>
+        <span><%= link_to 'マイページ', edit_user_registration_path %></span>
+        <span><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></span>
+      <% else %>
+        <span><%= link_to 'サインアップ', new_user_registration_path %></span>
+        <span><%= link_to 'ログイン', new_user_session_path %></span>
+      <% end %>
+    </div>
+    <div class="menu">
+      <span><%= link_to "公開記事(status:2)", blogs_path %></span>
+      <span><%= link_to "下書き記事(status:1)", blogs_draft_path(current_user.id) if user_signed_in? %></span>
+      <span><%= link_to "削除済み記事(status:3)", blogs_deleted_path(current_user.id) if user_signed_in? %></span>
+    </div>
+  </header>
+
+<p class="flash"><%= notice %><%= alert %></p>
+<%= yield %>
+
+</body>
+</html>
